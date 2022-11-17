@@ -1,6 +1,5 @@
 #pragma once
-#include "coord3d.h"
-
+#include "time.h"
 void printTime(Time time);
 
 //Part A
