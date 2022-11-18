@@ -1,5 +1,5 @@
 #pragma once
-#include "time.h"
+#include "classes.h"
 void printTime(Time time);
 int getMinutes(Time time);
 
