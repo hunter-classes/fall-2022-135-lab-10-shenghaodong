@@ -2,10 +2,9 @@
 #include "classes.h"
 
 //For Testing and other stuff
-void printTime(Time time);
+std::string getTime(Time time);
 int getMinutes(Time time);
-void printMovie(Movie mv);
-Time getTime(int minutes);
+std::string getMovie(Movie mv);
 
 //Part A
 int minutesSinceMidnight(Time time);
@@ -15,4 +14,4 @@ int minutesUntil(Time earlier, Time later);
 Time addMinutes(Time time0, int min);
 
 //Part C
-std::string getTimeSlot(Timeslot ts);
+std::string getTimeSlot(TimeSlot ts);

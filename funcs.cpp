@@ -2,20 +2,18 @@
 #include "classes.h"
 
 //Functions for testing
-void printTime(Time time){
-    std::cout << time.h << ":" << time.m;
-}
-
 int getMinutes(Time time){
     return (time.h * 60) + time.m;
 }
 
-Time getTime(int minutes){
-    
+std::string getTime(Time time){
+    int total = getMinutes(time);
+    std::string returnVal = std::to_string(total/60) + ":" + std::to_string(total%60);
+    return returnVal;
 }
 
-void printMovie(Movie mv){
-    string g;
+std::string getMovie(Movie mv){
+    std::string g;
     switch (mv.genre) {
         case ACTION   : g = "ACTION"; break;
         case COMEDY   : g = "COMEDY"; break;
@@ -23,15 +21,15 @@ void printMovie(Movie mv){
         case ROMANCE  : g = "ROMANCE"; break;
         case THRILLER : g = "THRILLER"; break;
     }
-    cout << mv.title << " " << g << " (" << mv.duration << " min)";
+    std::string returnVal;
+
+    returnVal = (std::string)mv.title + " " + g + " (" + std::to_string(mv.duration) + " min)";
+    return returnVal;
 }
 
 //Part A
 int minutesSinceMidnight(Time time){
     int returnVal = 1440 - ((time.h * 60) + time.m);
-    // while(returnVal >= 1440){
-    //     returnVal = 1440 - returnVal;
-    // };
     return returnVal;
 }
 
@@ -52,30 +50,12 @@ Time addMinutes(Time time0, int min){
 
 //Part C
 //the printTimeSlot function should be renamed getTimeSlot and it should return a std::string. Run from main and test via doctests.
-std::string getTimeSlot(Timeslot ts){
+std::string getTimeSlot(TimeSlot ts){
     std::string returnTimeSlot;
     //Back to the Future COMEDY (116 min) [starts at 9:15, ends by 11:11] <-- Format
-    Movie movie = ts.Movie;
-    Time time = ts.Time;
-    //Back to the Future COMEDY (116 min) [starts at 9:15, ends by 
-    std::string += movie.title << " " << movie.genre << " (" << movie.duration << ")" + "[starts at " << printTime(time) << ", ends by ";
+    Movie movie = ts.movie;
+    Time endTime = addMinutes(ts.startTime, movie.duration);
+    returnTimeSlot = getMovie(movie) + " [starts at " + getTime(ts.startTime) + ", ends by " + getTime(endTime) + "]";
+    return returnTimeSlot;
 
 }
-// class Time { 
-// public:
-//     int h;
-//     int m;
-// };
-
-// class Movie { 
-// public: 
-//     std::string title;
-//     Genre genre;     // only one genre per movie
-//     int duration;    // in minutes
-// };
-
-// class TimeSlot { 
-// public: 
-//     Movie movie;     // what movie
-//     Time startTime;  // when it starts
-// };

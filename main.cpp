@@ -16,10 +16,19 @@ int main(){
     //Part B
     Time minutesAdded;
     minutesAdded = addMinutes({8, 10}, 75);
-    printTime(minutesAdded);
+    std::cout << "Part B: " << getTime(minutesAdded) << std::endl;
     // ==> should return {9, 25}
 
 
     //Part C
+    Movie movie1 = {"Back to the Future", COMEDY, 116};
+    Movie movie2 = {"Black Panther", ACTION, 134};
+
+    TimeSlot morning = {movie1, {9, 15}};  
+    TimeSlot daytime = {movie2, {12, 15}}; 
+    TimeSlot evening = {movie2, {16, 45}}; 
+    std::cout << getTimeSlot(morning);
+    //std::string getTimeSlot(TimeSlot ts)
+
     return 0;
 }

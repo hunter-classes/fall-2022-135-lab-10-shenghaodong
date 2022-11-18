@@ -1,10 +1,10 @@
-enum Genre {ACTION, COMEDY, DRAMA, ROMANCE, THRILLER};
-
 class Time { 
 public:
     int h;
     int m;
 };
+
+enum Genre {ACTION, COMEDY, DRAMA, ROMANCE, THRILLER};
 
 class Movie { 
 public: 
