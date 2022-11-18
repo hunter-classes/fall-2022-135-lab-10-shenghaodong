@@ -14,6 +14,10 @@ int main(){
     std::cout << test << std::endl;
 
     //Part B
+    Time minutesAdded;
+    minutesAdded = addMinutes({8, 10}, 75);
+    printTime(minutesAdded);
+    // ==> should return {9, 25}
 
 
     //Part C
