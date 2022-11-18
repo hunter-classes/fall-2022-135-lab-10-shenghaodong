@@ -7,13 +7,15 @@ void printTime(Time time){
 
 //Part A
 int minutesSinceMidnight(Time time){
-    int returnVal = 1440 - (time.h * 60) + time.m;
-    while(returnVal >= 1440){
-        returnVal = 1440 - returnVal;
-    };
+    int returnVal = 1440 - ((time.h * 60) + time.m);
+    // while(returnVal >= 1440){
+    //     returnVal = 1440 - returnVal;
+    // };
     return returnVal;
 }
 
 int minutesUntil(Time earlier, Time later){
-    return 1;
+    int early = minutesSinceMidnight(earlier);
+    int late = minutesSinceMidnight(later);
+    return early - late;
 }
