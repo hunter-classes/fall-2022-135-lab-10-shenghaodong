@@ -15,3 +15,9 @@ Time addMinutes(Time time0, int min);
 
 //Part C
 std::string getTimeSlot(TimeSlot ts);
+
+//Part D
+TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie);
+
+//Part E
+bool timeOverlap(TimeSlot ts1, TimeSlot ts2); 

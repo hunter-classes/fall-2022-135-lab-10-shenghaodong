@@ -27,8 +27,15 @@ int main(){
     TimeSlot morning = {movie1, {9, 15}};  
     TimeSlot daytime = {movie2, {12, 15}}; 
     TimeSlot evening = {movie2, {16, 45}}; 
-    std::cout << getTimeSlot(morning);
+    std::cout << getTimeSlot(morning) << std::endl;
     //std::string getTimeSlot(TimeSlot ts)
+
+    //Part D
+    TimeSlot nextTime = scheduleAfter(morning, movie2);
+    std::cout << getTimeSlot(nextTime) << std::endl;
+
+    //Part E
+    //Find end and start minutes and compare them
 
     return 0;
 }

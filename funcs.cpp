@@ -57,5 +57,43 @@ std::string getTimeSlot(TimeSlot ts){
     Time endTime = addMinutes(ts.startTime, movie.duration);
     returnTimeSlot = getMovie(movie) + " [starts at " + getTime(ts.startTime) + ", ends by " + getTime(endTime) + "]";
     return returnTimeSlot;
+}
 
+//Part D
+TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie){
+    TimeSlot returnVal;
+    Movie movie = ts.movie;
+    Time endTime = addMinutes(ts.startTime, movie.duration);
+    returnVal.startTime = endTime;
+    returnVal.movie = nextMovie;
+    return returnVal;
+}
+
+/*
+enum Genre {ACTION, COMEDY, DRAMA, ROMANCE, THRILLER};
+
+class Movie { 
+public: 
+    std::string title;
+    Genre genre;     // only one genre per movie
+    int duration;    // in minutes
+};
+
+class TimeSlot { 
+public: 
+    Movie movie;     // what movie
+    Time startTime;  // when it starts
+};
+*/
+
+//Part E
+bool timeOverlap(TimeSlot ts1, TimeSlot ts2);{
+    Movie movie1 = ts1.movie;
+    Movie movie2 = ts2.movie;
+    int time1 = getMinutes(ts1.startTime);
+    int time2 = getMinutes(ts2.startTime);
+    int endTime1 = addMinutes(ts.startTime, movie1.duration);
+    int endTime2 = addMinutes(ts.startTime, movie2.duration);
+
+    return true;
 }
