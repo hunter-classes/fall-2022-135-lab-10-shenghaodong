@@ -87,13 +87,22 @@ public:
 */
 
 //Part E
-bool timeOverlap(TimeSlot ts1, TimeSlot ts2);{
+bool timeOverlap(TimeSlot ts1, TimeSlot ts2){
     Movie movie1 = ts1.movie;
     Movie movie2 = ts2.movie;
     int time1 = getMinutes(ts1.startTime);
     int time2 = getMinutes(ts2.startTime);
-    int endTime1 = addMinutes(ts.startTime, movie1.duration);
-    int endTime2 = addMinutes(ts.startTime, movie2.duration);
-
-    return true;
+    //time, int
+    int endTime1 = getMinutes(addMinutes(ts1.startTime, movie1.duration));
+    int endTime2 = getMinutes(addMinutes(ts2.startTime, movie2.duration));
+    if(time1 - time2 < 0){//Time 1 is earlier
+        if((time1 < time2 < endTime1) || (time1 < endTime2 < endTime1)){
+            return true;
+        }
+    }else if(time2 - time1 < 0){//Time 2 is earlier
+        if((time2 < time1 < endTime2) || (time2 < endTime1 < endTime2)){
+            return true;
+        }
+    }
+    return false;
 }

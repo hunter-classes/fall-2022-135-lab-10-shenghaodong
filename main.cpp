@@ -36,6 +36,12 @@ int main(){
 
     //Part E
     //Find end and start minutes and compare them
+    //bool timeOverlap(TimeSlot ts1, TimeSlot ts2)
+    //True = 1; False = 0;
+    TimeSlot overlap1 = {movie1, {9, 15}};  
+    TimeSlot overlap2 = {movie2, {10, 15}};
+    bool testOne = timeOverlap(overlap1, overlap2);
+    std::cout << "Part E: " << testOne << std::endl;
 
     return 0;
 }
