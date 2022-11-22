@@ -29,8 +29,14 @@ TEST_CASE("Task C"){
 }
 
 TEST_CASE("Task D"){
-    //TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie);
-    CHECK();
+    Movie movie1 = {"Weathering With You", ROMANCE, 114};
+    Movie movie2 = {"A Silent Voice", DRAMA, 129};
+    TimeSlot testA = {movie1, {9, 15}};  
+    TimeSlot testB = {movie2, {12, 45}}; 
+    TimeSlot resultA = scheduleAfter(testA, movie2);
+    TimeSlot resultB = scheduleAfter(testB, movie1);
+    CHECK(getTime(resultA.startTime) == "11:09");
+    CHECK(getTime(resultB.startTime) == "14:54");
 }   
 
 TEST_CASE("Task E"){
@@ -46,23 +52,3 @@ TEST_CASE("Task E"){
     CHECK(testTwo == false);
     CHECK(testThree == false);
 }
-
-/*
-
-//Part A
-int minutesSinceMidnight(Time time);
-int minutesUntil(Time earlier, Time later);
-
-//Part B
-Time addMinutes(Time time0, int min);
-
-//Part C
-std::string getTimeSlot(TimeSlot ts);
-
-//Part D
-TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie);
-
-//Part E
-bool timeOverlap(TimeSlot ts1, TimeSlot ts2); 
-
-*/

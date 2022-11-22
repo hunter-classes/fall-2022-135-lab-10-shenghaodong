@@ -9,6 +9,7 @@ int main(){
     //std::cout << "\n\n";
 
     //Part A
+    std::cout << "Part A: " << std::endl;
     std::cout << minutesSinceMidnight(now) << std::endl;
     int test = minutesUntil( {10, 30}, {13, 40} );
     std::cout << test << std::endl;
@@ -16,11 +17,13 @@ int main(){
     //Part B
     Time minutesAdded;
     minutesAdded = addMinutes({8, 10}, 75);
-    std::cout << "Part B: " << getTime(minutesAdded) << std::endl;
+    std::cout << "\nPart B: " << std::endl;
+    std::cout << getTime(minutesAdded) << std::endl;
     // ==> should return {9, 25}
 
 
     //Part C
+    std::cout << "\nPart C: " << std::endl;
     Movie movie1 = {"Back to the Future", COMEDY, 116};
     Movie movie2 = {"Black Panther", ACTION, 134};
 
@@ -31,6 +34,7 @@ int main(){
     //std::string getTimeSlot(TimeSlot ts)
 
     //Part D
+    std::cout << "\nPart D: " << std::endl;
     TimeSlot nextTime = scheduleAfter(morning, movie2);
     std::cout << getTimeSlot(nextTime) << std::endl;
 
@@ -41,7 +45,7 @@ int main(){
     TimeSlot overlap1 = {movie1, {9, 15}};  
     TimeSlot overlap2 = {movie2, {10, 15}};
     bool testOne = timeOverlap(overlap1, overlap2);
-    std::cout << "Part E: " << testOne << std::endl;
+    std::cout << "\nPart E: " << testOne << std::endl;
 
     return 0;
 }
