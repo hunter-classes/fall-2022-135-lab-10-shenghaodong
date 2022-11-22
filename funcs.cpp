@@ -31,7 +31,11 @@ int minutesSinceMidnight(Time time){
 //Test
 std::string getTime(Time time){
     int total = minutesSinceMidnight(time);
-    std::string returnVal = std::to_string(total/60) + ":" + std::to_string(total%60);
+    std::string returnVal = std::to_string(total/60) + ":";
+    if((total%60) < 10 && std::to_string(total%60) != "0"){
+        returnVal += "0";
+    }
+    returnVal += std::to_string(total%60);
     if(std::to_string(total%60) == "0"){
         returnVal += "0";
     }
@@ -85,11 +89,11 @@ bool timeOverlap(TimeSlot ts1, TimeSlot ts2){
     int endTime1 = minutesSinceMidnight(addMinutes(ts1.startTime, movie1.duration));
     int endTime2 = minutesSinceMidnight(addMinutes(ts2.startTime, movie2.duration));
     if(time1 - time2 < 0){//Time 1 is earlier
-        if((time1 < time2 < endTime1) || (time1 < endTime2 < endTime1)){
+        if(time2 < endTime1){
             return true;
         }
     }else if(time2 - time1 < 0){//Time 2 is earlier
-        if((time2 < time1 < endTime2) || (time2 < endTime1 < endTime2)){
+        if(time1 < endTime2){
             return true;
         }
     }

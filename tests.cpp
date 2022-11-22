@@ -18,18 +18,34 @@ TEST_CASE("Task B"){
 }
 
 TEST_CASE("Task C"){
-    CHECK();
-    //std::string getTimeSlot(TimeSlot ts);
+    //enum Genre {ACTION, COMEDY, DRAMA, ROMANCE, THRILLER};
+    //Back to the Future COMEDY (116 min) [starts at 9:15, ends by 11:11] <-- Format
+    Movie movie1 = {"Weathering With You", ROMANCE, 114};
+    Movie movie2 = {"A Silent Voice", DRAMA, 129};
+    TimeSlot testA = {movie1, {9, 15}};  
+    TimeSlot testB = {movie2, {12, 45}}; 
+    CHECK(getTimeSlot(testA) == "Weathering With You ROMANCE (114 min) [starts at 9:15, ends by 11:09]");
+    CHECK(getTimeSlot(testB) == "A Silent Voice DRAMA (129 min) [starts at 12:45, ends by 14:54]");
 }
 
-// TEST_CASE("Task D"){
-//     CHECK();
-// }
+TEST_CASE("Task D"){
+    //TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie);
+    CHECK();
+}   
 
-// TEST_CASE("Task E"){
-//     CHECK();
-// }
-
+TEST_CASE("Task E"){
+    Movie movie1 = {"Weathering With You", ROMANCE, 114};
+    Movie movie2 = {"A Silent Voice", DRAMA, 129};
+    TimeSlot overlap1 = {movie1, {12, 45}};  
+    TimeSlot overlap2 = {movie2, {13, 15}};
+    TimeSlot overlap3 = {movie1, {17, 39}};
+    bool testOne = timeOverlap(overlap1, overlap2);
+    bool testTwo = timeOverlap(overlap1, overlap3);
+    bool testThree = timeOverlap(overlap2, overlap3);
+    CHECK(testOne == true);
+    CHECK(testTwo == false);
+    CHECK(testThree == false);
+}
 
 /*
 
