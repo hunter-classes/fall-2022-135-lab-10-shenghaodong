@@ -2,13 +2,8 @@
 #include "classes.h"
 
 //Functions for testing
-int getMinutes(Time time){
-    return (time.h * 60) + time.m;
-}
-
-std::string getTime(Time time){
-    int total = getMinutes(time);
-    std::string returnVal = std::to_string(total/60) + ":" + std::to_string(total%60);
+int minutesUntilMidnight(Time time){
+    int returnVal = 1440 - ((time.h * 60) + time.m);
     return returnVal;
 }
 
@@ -28,20 +23,31 @@ std::string getMovie(Movie mv){
 }
 
 //Part A
+
 int minutesSinceMidnight(Time time){
-    int returnVal = 1440 - ((time.h * 60) + time.m);
-    return returnVal;
+    return ((time.h * 60) + time.m);
 }
 
+//Test
+std::string getTime(Time time){
+    int total = minutesSinceMidnight(time);
+    std::string returnVal = std::to_string(total/60) + ":" + std::to_string(total%60);
+    if(std::to_string(total%60) == "0"){
+        returnVal += "0";
+    }
+    return returnVal;
+}
+//Test
+
 int minutesUntil(Time earlier, Time later){
-    int early = minutesSinceMidnight(earlier);
-    int late = minutesSinceMidnight(later);
+    int early = minutesUntilMidnight(earlier);
+    int late = minutesUntilMidnight(later);
     return early - late;
 }
 
 //Part B
 Time addMinutes(Time time0, int min){
-    int totalMin = getMinutes(time0) + min;
+    int totalMin = minutesSinceMidnight(time0) + min;
     Time returnTime;
     returnTime.h = totalMin/60;
     returnTime.m = totalMin%60;
@@ -69,32 +75,15 @@ TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie){
     return returnVal;
 }
 
-/*
-enum Genre {ACTION, COMEDY, DRAMA, ROMANCE, THRILLER};
-
-class Movie { 
-public: 
-    std::string title;
-    Genre genre;     // only one genre per movie
-    int duration;    // in minutes
-};
-
-class TimeSlot { 
-public: 
-    Movie movie;     // what movie
-    Time startTime;  // when it starts
-};
-*/
-
 //Part E
 bool timeOverlap(TimeSlot ts1, TimeSlot ts2){
     Movie movie1 = ts1.movie;
     Movie movie2 = ts2.movie;
-    int time1 = getMinutes(ts1.startTime);
-    int time2 = getMinutes(ts2.startTime);
+    int time1 = minutesSinceMidnight(ts1.startTime);
+    int time2 = minutesSinceMidnight(ts2.startTime);
     //time, int
-    int endTime1 = getMinutes(addMinutes(ts1.startTime, movie1.duration));
-    int endTime2 = getMinutes(addMinutes(ts2.startTime, movie2.duration));
+    int endTime1 = minutesSinceMidnight(addMinutes(ts1.startTime, movie1.duration));
+    int endTime2 = minutesSinceMidnight(addMinutes(ts2.startTime, movie2.duration));
     if(time1 - time2 < 0){//Time 1 is earlier
         if((time1 < time2 < endTime1) || (time1 < endTime2 < endTime1)){
             return true;
